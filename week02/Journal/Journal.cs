@@ -22,10 +22,12 @@ public class Journal
     {
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
-
-            foreach (Entry entry in _entries)
+            outputFile.WriteLine("Journal Entries: ");
+            
+            foreach (Entry e in _entries)
             {
-                outputFile.WriteLine(entry);
+                //outputFile.WriteLine(e);
+                DisplayJournalEntries();
             }
             // // You can add text to the file with the WriteLine method
             //         outputFile.WriteLine("This will be the first line in the file.");

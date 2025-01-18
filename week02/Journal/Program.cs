@@ -8,6 +8,7 @@ class Program
         PromptGenerator pGen = new PromptGenerator();
         Journal journal = new Journal();
         Entry newEntry = new Entry();
+        
 
         do//do while works, DON'T TOUCH
         {
@@ -26,12 +27,14 @@ class Program
             
             if (userChoice == 1)//works don't touch//
             {
-                newEntry._randomPrompt = pGen.GetRandomPrompt();
+                Entry newEntry2 = new Entry();
                 
-                Console.WriteLine(newEntry._randomPrompt);
+                newEntry2._randomPrompt = pGen.GetRandomPrompt();
+                Console.WriteLine(newEntry2._randomPrompt);
                 Console.Write("> ");
-                newEntry._response = Console.ReadLine();
                 
+                newEntry2._response = Console.ReadLine();
+                newEntry = newEntry2;
                 journal.AddEntry(newEntry);
                 
                 //newEntry.DisplayEntry();
@@ -42,7 +45,7 @@ class Program
             }
 
 
-            if (userChoice == 2)//displays same entry, none of loaded file
+            if (userChoice == 2)//works DON'T TOUCH
             {
                
                 int numberEntries = journal._entries.Count();
