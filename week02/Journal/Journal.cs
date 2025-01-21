@@ -4,7 +4,7 @@ public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
 
-    public void AddEntry(Entry newEntry)
+    public void AddEntry(Entry newEntry)//works DON'T TOUCH
     {
         _entries.Add(newEntry);
     }
@@ -18,31 +18,31 @@ public class Journal
         }
     }
 
-    public void SaveToFile( string fileName)
+    public static void SaveToFile(List<Entry> entries)//DOESN'T SAVE ACTUAL TEXT, only shows class
+    //doesn't add entry to file, only overwrites
     {
+        Console.WriteLine("What would you like to name the file? ");
+        string fileName = Console.ReadLine();
+        
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
             outputFile.WriteLine("Journal Entries: ");
             
-            foreach (Entry e in _entries)
+            foreach (Entry e in entries)
             {
-                //outputFile.WriteLine(e);
-                DisplayJournalEntries();
+                outputFile.WriteLine(e);
+                //DisplayJournalEntries();
             }
-            // // You can add text to the file with the WriteLine method
-            //         outputFile.WriteLine("This will be the first line in the file.");
-    
-            // // You can use the $ and include variables just like with Console.WriteLine
-            //         string color = "Blue";
-            //         outputFile.WriteLine($"My favorite color is {color}");
-            //     }
+            
         }
     }
 
     public void LoadFromFile(string fileName)
     {
+        Console.WriteLine("Reading from file ...");
         //string filename = "myFile.txt";
         string[] lines = System.IO.File.ReadAllLines(fileName);
+
 
         foreach (string line in lines)
         {

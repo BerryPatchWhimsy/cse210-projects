@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 class Program
 {
     static void Main(string[] args)
@@ -60,18 +61,15 @@ class Program
                 {
                     journal.DisplayJournalEntries();
                 }
-                
-                
-                
             }
 
             if (userChoice == 3)//SEEMS TO WORK...entries are "Entry"
             {
-               
-                Console.WriteLine("What would you like to name the file?");
-                string fileName = Console.ReadLine();
-                journal.SaveToFile(fileName);
+               //List<Entry> _entries;
+                //Console.WriteLine("What would you like to name the file?");
+                //string fileName = Console.ReadLine();
 
+                Journal.SaveToFile(journal._entries);
             }
 
             if (userChoice == 4)//loads "Entry" from file, but cant add to it
