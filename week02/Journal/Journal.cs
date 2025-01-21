@@ -19,7 +19,7 @@ public class Journal
     }
 
     public static void SaveToFile(List<Entry> entries)//DOESN'T SAVE ACTUAL TEXT, only shows class
-    //doesn't add entry to file, only overwrites
+    //doesn't add entry to file, only overwrites, use entry.ToString()
     {
         Console.WriteLine("What would you like to name the file? ");
         string fileName = Console.ReadLine();
@@ -30,7 +30,8 @@ public class Journal
             
             foreach (Entry e in entries)
             {
-                outputFile.WriteLine(e);
+
+                outputFile.WriteLine(e.ToString());//still shows "Entry"
                 //DisplayJournalEntries();
             }
             
