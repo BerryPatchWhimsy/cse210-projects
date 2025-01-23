@@ -18,7 +18,7 @@ public class Journal
         }
     }
 
-    public static void SaveToFile(List<Entry> entries)//DOESN'T SAVE ACTUAL TEXT, only shows class
+    public void SaveToFile(List<Entry> entries)//DOESN'T SAVE ACTUAL TEXT, only shows class
     //doesn't add entry to file, only overwrites, use entry.ToString()
     {
         Console.WriteLine("What would you like to name the file? ");
@@ -26,12 +26,12 @@ public class Journal
         
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
-            outputFile.WriteLine("Journal Entries: ");
+            //outputFile.WriteLine("Journal Entries: ");
             
             foreach (Entry e in entries)
             {
 
-                outputFile.WriteLine(e.ToString());//still shows "Entry"
+                outputFile.WriteLine(e.SaveToString());//still shows "Entry"
                 //DisplayJournalEntries();
             }
             

@@ -69,7 +69,8 @@ class Program
                 //Console.WriteLine("What would you like to name the file?");
                 //string fileName = Console.ReadLine();
 
-                Journal.SaveToFile(journal._entries);
+
+                journal.SaveToFile(journal._entries);
             }
 
             if (userChoice == 4)//loads "Entry" from file, but cant add to it
