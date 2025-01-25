@@ -4,51 +4,70 @@ public class Scripture
     public List<Word> _words = new List<Word>();
     public Reference _reference;
 
+
+    public Scripture(Reference reference, string _texts)
+    {
+        //break _text string into Word objects and add to list?
+
+        string [] word = _texts.Split(" ");
+        string script = word[0];
+
+        foreach (char text in _texts)
+        {
+            Word w1 = new Word($"{script}");
+            _words.Add(w1);
+        }
+        
+        Console.WriteLine($"{reference}- {_words}");
+    }
+
     public void HideRandomWords(int numberToHide)
     {
-        // Random randomGenerator = new Random();
-    //  // string index = randomGenerator.Next(_words.Count);
-    //  // string _randomWord = _words[index];
+        int v = numberToHide;
+        for (int i=0; i < v; i++)
+        {
+            Random randomGenerator = new Random();
+            int index = randomGenerator.Next(_words.Count);
+            Word _randomWord = _words[index];
+            _randomWord.Hide();
+
+        }
     }
 
     
 
     public string GetDisplayText()
     {
-        r1.(GetDisplayText);
-        HideRandomWords(3);
-        return "";
+        //display reference and scripture with hidden words
+
+
+        Reference r1 = new Reference();
+        string refText = r1.GetReferenceVerses();
+
+        Scripture s1 = new Scripture(r1, "");
+
+        s1.HideRandomWords(3);
+
+        //HideRandomWords(3);
+
+        return $"{refText} - {s1}";
+
     }
 
     public bool IsCompletelyHidden()
     {
-       
-        
+        int v = _words.Count;
+
             Word w1 = new Word("");
-            if(w1.IsHidden() == true)
+            while (w1.IsHidden() == true)
             {
                 return true;
             }
-
-            if(w1.IsHidden() == false)
-            {
-                return false;
-            }
-        
+            return false;
+ 
     }
 
-    public Scripture(Reference reference, string _text)
-    {
-        //break _text string into Word objects and add to list?
-
-        foreach (string text in _text)
-        {
-            Word w1 = new Word(text);
-            _words.Add(w1);
-        }
-        //_words.Add(_text);
-        //Console.WriteLine($"{reference}- {_words}");
-    }
+    
 
 
     // public void DisplayReferenceSingleVerse()

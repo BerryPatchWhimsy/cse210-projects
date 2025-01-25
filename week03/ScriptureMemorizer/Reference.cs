@@ -7,15 +7,12 @@ public class Reference
     private int _verse;
     private int _lastVerse;
 
-    // public Reference
+    
+    // public string GetReferenceSingleVerse()
     // {
-
+    //     string scriptRef = _book + " " + _chapter + ":" + _verse;
+    //     return scriptRef;
     // }
-    public string GetReferenceSingleVerse()
-    {
-        string scriptRef = _book + " " + _chapter + ":" + _verse;
-        return scriptRef;
-    }
 
     public string GetReferenceVerses()
     {
@@ -23,6 +20,13 @@ public class Reference
         return scriptRef;
     }
 
+
+    public Reference()
+    {
+        _book = "";
+        _chapter = 1;
+        _verse = 1;
+    }
 
     public Reference(string book, int chapter, int verse)
     {

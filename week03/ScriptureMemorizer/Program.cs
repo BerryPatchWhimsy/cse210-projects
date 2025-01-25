@@ -12,6 +12,7 @@ class Program1
         //clear console, display whole scripture and ref.
         Console.WriteLine(r1);
         Console.WriteLine(s1);
+        s1.GetDisplayText(); 
 
         //prompt user to press <Enter> or type "quit", <Enter> == continue, "quit" == end
 
