@@ -12,19 +12,6 @@ public class Video
         return numberComments;
     }
 
-    // public string AsString()
-    // {
-    //     Console.WriteLine("");
-    //     Console.WriteLine($"'{_title}', by- {_author} ({_length}seconds): ");
-    //     Console.Write(NumberOfComments());
-    //     Console.WriteLine(" comments:");
-    //     foreach (Comment comment in _comments)
-    //     {
-    //         Console.WriteLine(comment.AsString());
-    //     }
-    //     Console.WriteLine("");
-    // }
-
     public void DisplayVideo()
     {
 
