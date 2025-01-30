@@ -30,8 +30,7 @@ public class Journal
             
             foreach (Entry e in entries)
             {
-
-                outputFile.WriteLine(e.SaveToString());//still shows "Entry"
+                outputFile.WriteLine(e.SaveToString());
                 //DisplayJournalEntries();
             }
             
