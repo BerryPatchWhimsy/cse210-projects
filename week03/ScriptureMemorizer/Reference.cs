@@ -1,5 +1,7 @@
 using System.Data;
 
+// Reference class works -- DONT TOUCH
+
 public class Reference
 {
     private string _book;
@@ -7,25 +9,12 @@ public class Reference
     private int _verse;
     private int _lastVerse;
 
-    
-    // public string GetReferenceSingleVerse()
-    // {
-    //     string scriptRef = _book + " " + _chapter + ":" + _verse;
-    //     return scriptRef;
-    // }
 
-    public string GetReferenceVerses()
-    {
-        string scriptRef = _book + " " + _chapter + ":" + _verse + "-" + _lastVerse;
-        return scriptRef;
-    }
-
-
-    public Reference()
+    public Reference()//necessary?
     {
         _book = "";
-        _chapter = 1;
-        _verse = 1;
+        _chapter = 0;
+        _verse = 0;
     }
 
     public Reference(string book, int chapter, int verse)
@@ -45,23 +34,43 @@ public class Reference
 
     
 
-    public void SetBook(string book)
-    {
-        _book = book;
-    }
+    
 
-    public void SetChapter(int chapter)
-    {
-        _chapter = chapter;
-    }
+    // public void SetBook(string book)
+    // {
+    //     _book = book;
+    // }
 
-    public void SetVerse(int verse)
-    {
-        _verse = verse;
-    }
+    // public void SetChapter(int chapter)
+    // {
+    //     _chapter = chapter;
+    // }
 
-    public void SetLastVerse(int lastVerse)
+    // public void SetVerse(int verse)
+    // {
+    //     _verse = verse;
+    // }
+
+    // public void SetLastVerse(int lastVerse)
+    // {
+    //     _lastVerse = lastVerse;
+    // }
+
+    public string GetReference()
     {
-        _lastVerse = lastVerse;
+        string scriptRef;
+
+        if (_lastVerse == 0)
+        {
+            scriptRef = $"{_book} {_chapter}:{_verse}";
+        }
+
+        else 
+        {
+            scriptRef = $"{_book} {_chapter}:{_verse}-{_lastVerse}";
+        }
+        //string scriptRef = _book + " " + _chapter + ":" + _verse + "-" + _lastVerse;
+        
+        return scriptRef;
     }
 }

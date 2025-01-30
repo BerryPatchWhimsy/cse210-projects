@@ -5,7 +5,7 @@ public class Word
     private bool _isHidden;
     
 
-    public Word(string text)
+    public Word(string text)// works DONT TOUCH
     {
         _wordText = text; 
         _isHidden = false;
@@ -14,22 +14,27 @@ public class Word
 
     public void Show()
     {
-        Console.WriteLine(_wordText);
+        Console.WriteLine($"{_wordText} ");
         _isHidden = false;
     }
 
-    public void Hide()
+    public void Hide()//works
     {
         //hide word
         
         foreach (char w in _wordText)
         {
-            Console.WriteLine("_ ");
+            Console.Write("_");
         }
         
         _isHidden = true;
         
     }
+
+    // public string ChangeToString()
+    // {
+    //     return $"{_wordText} "; 
+    // }
 
     public bool IsHidden()
     {
@@ -44,15 +49,22 @@ public class Word
         }
     }
 
-    public string GetDisplayText()
+    public string GetDisplayText()//Work??
     {
         //show word or underscore
         
-        while (IsHidden() == false)
+        if (IsHidden() == true)
         {
             Hide();
         }
+
+        if (IsHidden() == false)
+        {
+            Console.Write($"{_wordText} ");
+        }
+        
         return _wordText;
 
+        
     }
 }
