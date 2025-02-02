@@ -10,52 +10,7 @@ public class Reference
     private int _lastVerse;
 
 
-    public Reference()//necessary?
-    {
-        _book = "";
-        _chapter = 0;
-        _verse = 0;
-    }
-
-    public Reference(string book, int chapter, int verse)
-    {
-        _book = book;
-        _chapter = chapter;
-        _verse = verse;
-    }
-
-    public Reference(string book, int chapter, int verse, int lastVerse)
-    {
-        _book = book;
-        _chapter = chapter;
-        _verse = verse;
-        _lastVerse = lastVerse;
-    }
-
-    
-
-    
-
-    // public void SetBook(string book)
-    // {
-    //     _book = book;
-    // }
-
-    // public void SetChapter(int chapter)
-    // {
-    //     _chapter = chapter;
-    // }
-
-    // public void SetVerse(int verse)
-    // {
-    //     _verse = verse;
-    // }
-
-    // public void SetLastVerse(int lastVerse)
-    // {
-    //     _lastVerse = lastVerse;
-    // }
-
+    //get dipslay text of the reference as a string that combines book, chapter, verse or verses
     public string GetReference()
     {
         string scriptRef;
@@ -72,5 +27,22 @@ public class Reference
         //string scriptRef = _book + " " + _chapter + ":" + _verse + "-" + _lastVerse;
         
         return scriptRef;
+    }
+
+    //constructor for  parameters: book, chapter, single verse
+    public Reference(string book, int chapter, int verse)
+    {
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
+    }
+
+    //constructor for parameters: book, chapter, multiple verses
+    public Reference(string book, int chapter, int verse, int lastVerse)
+    {
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
+        _lastVerse = lastVerse;
     }
 }

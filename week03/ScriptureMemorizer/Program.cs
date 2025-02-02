@@ -1,103 +1,56 @@
 using System;
+//I tried to add a few things to just make it easier for the user to read from the console. Like
+//putting the reference on a line by itself and the welcome message set apart by a blank line when the 
+//program starts.
 
 class Program1
 {
     static void Main(string[] args)
     {
-        
 
-
-        // Console.WriteLine("");
-        // Console.WriteLine("Welcome to the scripture memorizer");
-        //store scripture and reference
-
-        // Word w1 = new Word("hello");
-        // w1.GetDisplayText();
-       
-        //w1.GetDisplayText();
-
-        
+        //must store a scripture with reference and text, allow for multiple verses
         Reference r1 = new Reference("Proverbs", 3, 5, 6);
-        //Console.WriteLine(r1.GetReference());
+        Console.WriteLine(r1.GetReference());
         
         Scripture s1 = new Scripture(r1,"Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct they paths.");
-        //Console.WriteLine(s1._words);
+            //Console.WriteLine(s1._words);
 
-        Console.WriteLine(_words.HideRandomWords(3));
-        
 
-        
-        //Console.WriteLine(s1.GetDisplayText());
-        //clear console, display whole scripture and ref.
-        //r1.GetReference();
-        bool _isHidden = s1.IsCompletelyHidden();
-
-        // while (_isHidden == false)
-        // {
-            Console.WriteLine("Welcome to Scripture Memorizer");
-            Console.WriteLine("To continue press <Enter>, to quit type 'quit'.");
-            string userInput = "quit";
+        //clear console and display complete scripture- reference and text
+        Console.Clear();
+        Console.WriteLine($"{r1.GetReference()} ");
+        s1.GetDisplayText();
             
 
-            //string userQuit = Console.ReadLine();
-        // while (userInput != "quit")
-        // {
+        //prompt user to press<enter> or type "quit"
+        Console.WriteLine("");
+        Console.WriteLine("\nWelcome to Scripture Memorizer");
+        Console.WriteLine("To continue press <Enter>, to quit type 'quit'.");
+        string userInput = Console.ReadLine();
 
-            // if (userQuit == "quit" || userQuit == "Quit")
-            // {
-            //     Console.WriteLine("Goodbye!");
-            // }
-
-             
-            while (Console.ReadKey(true).Key == ConsoleKey.Enter && _isHidden == false)// add to 1st while loop?
+        //quit = end
+        //<enter> = hide random words, clear console, display new scripture 
+        //with hidden words as underscores
+        //if <enter> continue hide, clear, display till all hidden- then end
+            
+        while (Console.ReadKey(true).Key == ConsoleKey.Enter && userInput != "quit")
+        {
+            if (s1.IsCompletelyHidden() == false)
             {
-                r1.GetReference();
-
-                s1.GetDisplayText();
+                s1.HideRandomWords(3);
                 Console.Clear();
                 s1.GetDisplayText();
-                string newUserInput;//for sake of loop
-                //_isHidden;
+                string newUserInput = Console.ReadLine();
+            }
 
+            else
+            {
+                Console.WriteLine("Goodbye!");
+            }
 
-                
-            }Console.WriteLine("Goodbye!");
-
-                
-
-                // else
-                // {
-                //     Console.WriteLine("Oops- entry is invalid.");
-                // }
-            
-            
-            
-
-            //ConsoleKeyInfo userKey = Console.ReadKey();
-            //if (userKey == ConsoleKey.Enter);
-
-            //example from internet:
-            //while(Console.ReadKey(true).Key != ConsoleKey.Enter);
-
-           
-
-
-
-            
-        //}Console.WriteLine("Goodbye!");
-
-
-
+        }Console.WriteLine("Goodbye!");
         
-        //Console.WriteLine(s1);
-        
-       //s1.GetDisplayText(); 
 
-        //prompt user to press <Enter> or type "quit", <Enter> == continue, "quit" == end
 
-        //<Enter> should hide few words of scripture, clear console, display again w/ hidden words
-        //underscores should match number of letters in the word
-
-        //program should continue prompting user and hiding words till all hidden => end
     } 
 }
