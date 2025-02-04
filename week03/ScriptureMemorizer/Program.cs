@@ -25,7 +25,7 @@ class Program1
         //prompt user to press<enter> or type "quit"
         Console.WriteLine("");
         Console.WriteLine("\nWelcome to Scripture Memorizer");
-        Console.WriteLine("To continue press <Enter>, to quit type 'quit'.");
+        Console.Write("To continue press <Enter>, to quit type 'quit'.");
         string userInput = Console.ReadLine();
 
         //quit = end
@@ -35,20 +35,21 @@ class Program1
             
         while (Console.ReadKey(true).Key == ConsoleKey.Enter && userInput != "quit")
         {
-            if (s1.IsCompletelyHidden() == false)
+            //string UserInput = Console.ReadLine();
+            if (s1.IsCompletelyHidden() == false) //&& UserInput != "quit")
             {
                 s1.HideRandomWords(3);
                 Console.Clear();
                 s1.GetDisplayText();
-                string newUserInput = Console.ReadLine();
+                //string UserInput = Console.ReadLine();
             }
 
             else
             {
-                Console.WriteLine("Goodbye!");
+                Console.WriteLine("\nGoodbye!");
             }
 
-        }Console.WriteLine("Goodbye!");
+        }Console.WriteLine("\nGoodbye!");
         
 
 

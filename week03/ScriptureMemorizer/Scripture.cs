@@ -37,39 +37,23 @@ public class Scripture
     }
 
 
-    // public void DisplayWordListText()
-    // {
-    //     foreach (Word word in _words)
-    //     {
-    //         Console.Write($"{word.GetDisplayText()} ");//doubles words
-    //         //word.GetDisplayText();//single words
-            
-    //     }
-        
-    // }
-
-    
-
-
     //get display text as a string. needs to have text and underscores
     public string GetDisplayText()
     {
         //display reference and scripture with hidden words
 
-        //_reference.GetReference();
+        _reference.GetReference();
 
-        string referenceText = _reference.GetReference();//leave alone
+        //string referenceText = _reference.GetReference();//leave alone
         //Word.GetDisplayText();
 
         foreach (Word word in _words)
         {
-            
             //Console.Write($"{word.GetDisplayText()} ");//doubles words
             _reference.GetReference();
             word.GetDisplayText();//single words
         }
-
-        
+ 
         //return $"{referenceText} - {_words}";//returns words, reference, list trail
        //return referenceText;//returns words, reference
        return ""; //returns words 
@@ -77,40 +61,20 @@ public class Scripture
     }
 
     //check to see if the scripture is completely hidden. If true, end program
-    public bool IsCompletelyHidden()//needs work
+    public bool IsCompletelyHidden()
     {
-        // //bool _isHidden;
+        //bool _isHidden;
         Word w1 = new Word("");
 
-        // foreach (Word word in _words)
-        // {
-        //     if (word.IsHidden() == false)
-        //     {
-        //         //_isHidden = false;
-        //         return false;
-        //     }
-
-        //     else
-        //     {
-        //         //_isHidden = true;
-        //         return true;
-        //     }
-
-        // }
-        
-
-        
-        
-        int v = _words.Count;
-        
-        for (int i=0; i < v; i++)
-
-            
-            while (w1.IsHidden() == true)
+        foreach (Word word in _words)
+        {
+            if (word.IsHidden() == false)
             {
-                return true;
+                //_isHidden = false;
+                return false;
             }
-            return false;
+        }
+        return true;
  
     }
 
