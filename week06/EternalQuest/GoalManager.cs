@@ -38,9 +38,24 @@ public class GoalManager
             //display goals
             if (userInput == 2)
             {
-                //Console.WriteLine($"The goals are: ");
+                // if (_goals.Count() == 0)
+                // {
+                //     Console.WriteLine("You have no goals set.");
+                // }
+
+                // else
+                // {
+                //     //Console.WriteLine($"The goals are: ");
+                //     for (int i = 0; i < _goals.Count(); i++)
+                //     {
+                //         Console.WriteLine($"{i + 1} {_goals[i].GetGoalName()}");
+                //     }
+                //     Console.WriteLine("Choose from the menu");
+                // }
                 ListGoalDetails();
-                //Console.WriteLine("");
+                Console.WriteLine("");
+                //Start();
+                
             }
 
             if (userInput == 3)
@@ -55,8 +70,7 @@ public class GoalManager
 
             if (userInput == 5)
             {
-                ListGoalNames();
-                //RecordEvent();
+                RecordEvent();
             }
 
         }Console.WriteLine("Goodbye");
@@ -72,17 +86,34 @@ public class GoalManager
     //lists names of each of the goals
     public void ListGoalNames()//runs unending loop, needs to be numbered,
     {
-        // for (int i = 0; i <= _goals.Count(); i++)
-        // {
+        // // for (int i = 0; i <= _goals.Count(); i++)
+        // // {
             
-            foreach (Goal g in _goals)
+        //     foreach (Goal g in _goals)
+        //     {
+        //         Console.WriteLine($"{g.GetGoalName()}");
+        //     }
+
+        //     Console.WriteLine("");
+        // //}
+
+        if (_goals.Count() == 0)
+        {
+            Console.WriteLine("You have no goals set.");
+        }
+
+        else
+        {
+            //Console.WriteLine($"The goals are: ");
+            for (int i = 0; i < _goals.Count(); i++)
             {
-                Console.WriteLine($"{g.GetGoalName()}");
+                Console.WriteLine($"{i + 1}. {_goals[i].GetGoalName()}");
             }
+            
+        }
 
-            Console.WriteLine("");
-        //}
-
+        
+        
     }
 
     //Lists the details of each goal (including the checkbox of whether it is 
@@ -94,7 +125,7 @@ public class GoalManager
         {
             Console.WriteLine(g.GetDetailsString());
         }
-        
+        Console.WriteLine("");
     }
 
     //Asks the user for the information about a new goal. Then, creates the goal and adds it to the list.
@@ -170,20 +201,28 @@ public class GoalManager
     //calling the RecordEvent method on that goal.
     public void RecordEvent()//needs work
     {
-        //Console.WriteLine("\nThe goals are: ");
-        Console.WriteLine("\nWhich goal did you accomplish?");
-        ListGoalNames();//runs unending loop, needs to be numbered,
-        Console.Write("Choose from the menu: ");
+        Console.WriteLine("\nGoal menu:");
+        ListGoalNames();//runs unending loop 
+        Console.Write("Which goal did you accomplish? ");
 
-        string userInput = Console.ReadLine();
+        int userInput = int.Parse(Console.ReadLine());
 
+        // if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && < _goals.Count())
+        // {
+        //     _goals[index - 1].IsComplete = true;
+        // }
 
-        foreach (Goal g in _goals)
-        {
-            string lines = g.GetStringRepresentation();
-            //string parts = lines.Split(":");
+        //var 
+        // string [] lines;
 
-        }
+        // foreach (Goal g in _goals)
+        // {
+            
+        //     string line = g.GetStringRepresentation();
+            
+        //     //string parts = lines.Split(":");
+
+        // }
 
 
 
