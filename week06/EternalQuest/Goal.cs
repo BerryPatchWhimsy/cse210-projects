@@ -19,10 +19,8 @@ public abstract class Goal
     public abstract bool IsComplete();
 
     
-    //return the details of a goal that could be shown in a list. It should 
-    //include the checkbox, the short name, and description. Then in the case 
-    //of the ChecklistGoal class, it should be overridden to show number of times
-    //the goal has been accomplished so far
+    //return the details of a goal that could be shown in a list. 
+    //include the checkbox, the short name, and description. 
     public virtual string GetDetailsString()
     {
         string _checkbox;
@@ -30,7 +28,7 @@ public abstract class Goal
         if (IsComplete() == true)
         {
             _checkbox = "[X]";
-            //return $"{_checkbox} {_goalName} ({_description})";
+            return $"{_checkbox} {_goalName} ({_description})";
         }
           
         _checkbox = "[ ]";

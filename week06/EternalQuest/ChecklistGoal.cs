@@ -13,12 +13,9 @@ public class ChecklistGoal : Goal
 
     }
 
-    //This method should do whatever is necessary for each specific kind of 
-    //goal, such as marking a simple goal complete and adding to the number of 
-    //times a checklist goal has been completed. It should return the point 
-    //value associated with recording the event (keep in mind that it may 
-    //contain a bonus in some cases if a checklist goal was just finished, 
-    //for example).
+    //This method should add to the number of times a checklist goal has been completed. 
+    //return the point value associated with recording the event (keep in mind that it may 
+    //contain a bonus if a checklist goal was just finished, 
     public override void RecordEvent()
     {
         int points = GetGoalPoints();
@@ -34,8 +31,7 @@ public class ChecklistGoal : Goal
         Console.WriteLine($"Congratulations! You have earned {points} points.");
     }
 
-    //This method should return true if the goal is completed. The way you 
-    //determine if a goal is complete is different for each type of goal.
+    //This method should return true if the goal is completed. 
     public override bool IsComplete()
     {
         if (_amountCompleted == _target)
@@ -46,8 +42,7 @@ public class ChecklistGoal : Goal
     }
 
     //return the details of a goal that could be shown in a list. It should 
-    //include the checkbox, the short name, and description. Then in the case 
-    //of the ChecklistGoal class, it should be overridden to show number of times
+    //include the checkbox, the short name, and description. show number of times
     //the goal has been accomplished so far
     public override string GetDetailsString()
     {
@@ -59,6 +54,8 @@ public class ChecklistGoal : Goal
         if (IsComplete() == true)
         {
             _checkbox = "[X]";
+            return $"{_checkbox} {name} ({description}) -- Currently completed: {_amountCompleted}/{_target}";
+
         }
           
         _checkbox = "[ ]";

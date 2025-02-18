@@ -6,7 +6,6 @@ public class GoalManager
     //initializes empty list of goals, sets initial score to 0
     public GoalManager()
     {
-       //_goals = ;
         _score = 0;
     }
 
@@ -14,7 +13,6 @@ public class GoalManager
     //and then runs the menu loop.
     public void Start()
     {
-        Console.Clear();
         DisplayPlayerInfo();
         Console.WriteLine("");
         Console.WriteLine("Choose an option from the following menu: ");
@@ -26,106 +24,70 @@ public class GoalManager
         Console.WriteLine("6. Quit");
 
         int userInput = int.Parse(Console.ReadLine());
-        
-
-        while (userInput != 6)
+    
+        if (userInput == 1)
         {
-            if (userInput == 1)
-            {
-                CreateGoal();
-            }
+            CreateGoal();
+        }
 
-            //display goals
-            if (userInput == 2)
-            {
-                // if (_goals.Count() == 0)
-                // {
-                //     Console.WriteLine("You have no goals set.");
-                // }
+        if (userInput == 2)//display goals
+        {
+            ListGoalDetails();
+        }
 
-                // else
-                // {
-                //     //Console.WriteLine($"The goals are: ");
-                //     for (int i = 0; i < _goals.Count(); i++)
-                //     {
-                //         Console.WriteLine($"{i + 1} {_goals[i].GetGoalName()}");
-                //     }
-                //     Console.WriteLine("Choose from the menu");
-                // }
-                ListGoalDetails();
-                Console.WriteLine("");
-                //Start();
-                
-            }
+        if (userInput == 3)
+        {
+            SaveGoals();
+        }
 
-            if (userInput == 3)
-            {
-                SaveGoals();
-            }
+        if (userInput == 4)
+        {
+            LoadGoals();
+        }
 
-            if (userInput == 4)
-            {
-                LoadGoals();
-            }
+        if (userInput == 5)
+        {
+            RecordEvent();
+        }
 
-            if (userInput == 5)
-            {
-                RecordEvent();
-            }
-
-        }Console.WriteLine("Goodbye");
+        if (userInput == 6)
+        {
+            Console.WriteLine("Goodbye");
+        }
 
     }
+    
 
     //Displays the players current score.
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"You currently have {_score} points");
+        Console.WriteLine($"\nYou currently have {_score} points");
     }
 
     //lists names of each of the goals
-    public void ListGoalNames()//runs unending loop, needs to be numbered,
+    public void ListGoalNames()
     {
-        // // for (int i = 0; i <= _goals.Count(); i++)
-        // // {
-            
-        //     foreach (Goal g in _goals)
-        //     {
-        //         Console.WriteLine($"{g.GetGoalName()}");
-        //     }
+        for (int i = 0; i < _goals.Count(); i++)
+        {
+            Console.WriteLine($"{i + 1}. {_goals[i].GetGoalName()}");
+        } 
+    }
 
-        //     Console.WriteLine("");
-        // //}
-
+    //Lists the details of each goal (including the checkbox) 
+    public void ListGoalDetails()
+    {
         if (_goals.Count() == 0)
         {
             Console.WriteLine("You have no goals set.");
         }
 
-        else
-        {
-            //Console.WriteLine($"The goals are: ");
-            for (int i = 0; i < _goals.Count(); i++)
-            {
-                Console.WriteLine($"{i + 1}. {_goals[i].GetGoalName()}");
-            }
-            
-        }
-
-        
-        
-    }
-
-    //Lists the details of each goal (including the checkbox of whether it is 
-    //complete).
-    public void ListGoalDetails()
-    {
         Console.WriteLine($"The goals are: ");
         foreach (Goal g in _goals)
         {
             Console.WriteLine(g.GetDetailsString());
         }
-        Console.WriteLine("");
+        
+        Start();
     }
 
     //Asks the user for the information about a new goal. Then, creates the goal and adds it to the list.
@@ -194,63 +156,26 @@ public class GoalManager
         }
 
         Start();
-
     }
 
-    //Asks the user which goal they have done and then records the event by 
+    //Asks the user which goal they have done, records the event by 
     //calling the RecordEvent method on that goal.
-    public void RecordEvent()//needs work
+    public void RecordEvent()
     {
         Console.WriteLine("\nGoal menu:");
-        ListGoalNames();//runs unending loop 
+        ListGoalNames();
         Console.Write("Which goal did you accomplish? ");
 
         int userInput = int.Parse(Console.ReadLine());
 
-        // if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && < _goals.Count())
-        // {
-        //     _goals[index - 1].IsComplete = true;
-        // }
+        int x = userInput;
+        Goal g = _goals[x - 1];
+        g.RecordEvent();
+        int points = g.GetGoalPoints();
+        int newScore = _score + points;
+        _score = newScore;
 
-        //var 
-        // string [] lines;
-
-        // foreach (Goal g in _goals)
-        // {
-            
-        //     string line = g.GetStringRepresentation();
-            
-        //     //string parts = lines.Split(":");
-
-        // }
-
-
-
-        // Console.WriteLine("What is the filename for the goal file?");
-        // string fileName = Console.ReadLine();
-       
-        // string[] lines = System.IO.File.ReadAllLines(fileName);
-
-        // foreach (string line in lines)
-        // {
-        //     string[] parts = line.Split("|");
-        //     string goal = parts[0];
-    
-        //     Console.WriteLine(goal);
-        // }
-
-        // if (userInput = )
-        // {
-
-        // }
-        // string goalName = GetGoalName();
-        
-        // if (userInput = goalName)
-
-
-        // int currentScore = _score + 
         Start();
-
     }
 
     //saves the list of goals to a file
@@ -277,19 +202,21 @@ public class GoalManager
     {
         Console.WriteLine("What is the filename for the goal file?");
         string fileName = Console.ReadLine();
+        Console.WriteLine("Reading from file ...");
        
         string[] lines = System.IO.File.ReadAllLines(fileName);
 
         foreach (string line in lines)
         {
-            string[] parts = line.Split(":");
-            string goalType = parts[0];
-            string goal = parts[1];
-    
-            Console.WriteLine($"{goalType}: {goal}");
+            string[] parts = line.Split("|");
+
+            string goal = parts[0];
+            
+            Console.WriteLine(goal);
         }
- 
+        
         Start();
+ 
     }
 
 }

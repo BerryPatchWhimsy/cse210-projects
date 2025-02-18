@@ -8,12 +8,8 @@ public class SimpleGoal : Goal
         _isComplete = false;
     }
 
-    //This method should do whatever is necessary for each specific kind of 
-    //goal, such as marking a simple goal complete and adding to the number 
-    //of times a checklist goal has been completed. It should return the point 
-    //value associated with recording the event (keep in mind that it may 
-    //contain a bonus in some cases if a checklist goal was just finished, for 
-    //example).
+    //marking a simple goal complete,return the point 
+    //value associated with recording the event 
     public override void RecordEvent()
     {
         _isComplete = true;
@@ -22,7 +18,7 @@ public class SimpleGoal : Goal
         
     }
 
-    //This method should return true if the goal is completed. The way you determine if a goal is complete is different for each type of goal.
+    //This method should return true if the goal is completed.
     public override bool IsComplete()
     {
         if (_isComplete == false)
@@ -33,8 +29,7 @@ public class SimpleGoal : Goal
         return true;
     }
 
-    //This method should provide all of the details of a goal in a way that is 
-    //easy to save to a file, and then load later.
+    //Tall of the details of a goal in a way that is easy to save to a file, and load later.
     public override string GetStringRepresentation()
     {
         string name = GetGoalName();
